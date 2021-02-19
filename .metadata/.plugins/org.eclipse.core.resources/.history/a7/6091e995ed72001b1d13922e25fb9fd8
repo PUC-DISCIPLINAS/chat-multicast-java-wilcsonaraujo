@@ -1,0 +1,31 @@
+import java.net.*;
+import java.util.Scanner;
+
+public class Server {
+	
+	MulticastSocket socket = null;
+	byte[] buffer = null;
+	DatagramSocket receivePacket = null;
+	Scanner scan = null;
+	
+	public static void main (String[] args) {
+		
+	}
+	
+	private void initializeVariable() {
+		try {
+			socket = new MulticastSocket();
+			buffer = new byte[Constantes.BUFFER_SIZE];
+			scan = new Scanner(System.in);
+			
+			log("Server Running...");
+		} catch (SocketException s) {
+			log("initializeVariable : " + s.toString());
+		} catch (Exception e) {
+			log("initializeVariable : " + e.toString());
+		}
+	}
+	private void log(String message) {
+		System.out.println(message);
+	}
+}
